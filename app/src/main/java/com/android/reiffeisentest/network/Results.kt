@@ -11,12 +11,7 @@ data class Results(
 @Parcelize
 data class PersonInfo(
     val gender: String,
-    val street: StreetInfo,
-    val city: String,
-    val state: String,
-    val postCode: String,
-    val coordinates: CoordinatesInfo,
-    val timezone: TimezoneInfo,
+    val location: LocationInfo,
     val email: String,
     val login: LoginInfo,
     val dob: DobInfo,
@@ -26,6 +21,17 @@ data class PersonInfo(
     val id: IdInfo,
     val picture: PictureInfo,
     val nat: String
+) : Parcelable
+
+@Parcelize
+data class LocationInfo(
+    val street: StreetInfo,
+    val city: String,
+    val state: String,
+    val country: String,
+    val postcode: String,
+    val coordinates: CoordinatesInfo,
+    val timezone: TimezoneInfo
 ) : Parcelable
 
 @Parcelize
@@ -78,6 +84,6 @@ data class RegisteredInfo(
 
 @Parcelize
 data class IdInfo(
-    val name: String,
-    val value: String
+    val name: String?=null,
+    val value: String?=null
 ) : Parcelable
