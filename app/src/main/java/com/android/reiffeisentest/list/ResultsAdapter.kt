@@ -17,6 +17,9 @@ class ResultsAdapter : ListAdapter<PersonInfo, ResultsAdapter.ResultsViewHolder>
         RecyclerView.ViewHolder(binding.root), View.OnClickListener {
         fun bind(p: PersonInfo) {
             binding.personInfo = p
+
+            binding.personName.setClipToOutline(true)
+
             binding.executePendingBindings()
         }
 

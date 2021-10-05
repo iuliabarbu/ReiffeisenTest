@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.android.reiffeisentest.list.ResultsAdapter
 import com.android.reiffeisentest.list.ResultsApiStatus
 import com.android.reiffeisentest.network.Results
+import com.bumptech.glide.Glide
 
 @BindingAdapter("listData")
 fun bindRecyclerView(recyclerView: RecyclerView, data: Results?) {
@@ -28,5 +29,16 @@ fun bindStatus(statusImageView: ImageView, status: ResultsApiStatus?) {
         ResultsApiStatus.DONE -> {
             statusImageView.visibility = View.GONE
         }
+    }
+}
+
+@BindingAdapter("imageUrl")
+fun bindImage(imgView: ImageView, imgUrl: String?) {
+    imgUrl?.let {
+        Glide
+            .with(imgView.context)
+            .load(imgUrl)
+            .error(R.drawable.ic_broken_image)
+            .into(imgView)
     }
 }
