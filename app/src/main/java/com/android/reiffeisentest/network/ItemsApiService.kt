@@ -5,12 +5,12 @@ import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
+import retrofit2.http.Query
 
 private const val BASE_URL = "https://randomuser.me/api/"
 
 private val moshi = Moshi.Builder()
     .add(KotlinJsonAdapterFactory())
-    //.add(TripsMoshiAdapter())
     .build()
 
 
@@ -20,10 +20,14 @@ private val retrofit = Retrofit.Builder()
     .build()
 
 interface ItemsApiService {
+    //    @GET("?page=0&results=10&seed=abc")
+//    suspend fun getResults(
+//        @Query("results") results: String
+//    ): Results
     @GET("?page=0&results=10&seed=abc")
-    suspend fun getItems(): Results
+    suspend fun getResults(): Results
 }
 
-object TripsApi {
+object ResultsApi {
     val retrofitService: ItemsApiService by lazy { retrofit.create(ItemsApiService::class.java) }
 }
