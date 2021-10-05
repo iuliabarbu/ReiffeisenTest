@@ -14,7 +14,7 @@ fun bindRecyclerView(recyclerView: RecyclerView, data: Results?) {
     adapter.submitList(data?.results)
 }
 
-@BindingAdapter("tripsApiStatus")
+@BindingAdapter("itemsApiStatus")
 fun bindStatus(statusImageView: ImageView, status: ResultsApiStatus?) {
     when (status) {
         ResultsApiStatus.LOADING -> {

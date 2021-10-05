@@ -17,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:text="abcdefg@email.com"
-            android:text="@{personInfo.email"></TextView>
+            android:text="@{personInfo.email}"></TextView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

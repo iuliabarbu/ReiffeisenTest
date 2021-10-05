@@ -1,5 +1,6 @@
 package com.android.reiffeisentest.list
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -32,6 +33,7 @@ class ListViewModel : ViewModel() {
             try {
                 var resultsRows = ResultsApi.retrofitService.getResults()
                 _results.value = resultsRows
+                Log.d(TAG, "response length" + resultsRows.results.size.toString())
                 _status.value = ResultsApiStatus.DONE
             } catch (e: Exception) {
                 e.printStackTrace()
