@@ -32,7 +32,7 @@ class ListViewModel : ViewModel() {
     }
 
     fun getPaginatedResults() {
-        //load just 3 pages
+        //load just 3 pages and avoid multiple calls from onScrolled
         if (currentPage.value!! >= 2 || _status.value == ResultsApiStatus.LOADING) {
             Log.d(TAG, " return " + _currentPage.value + " -" + _status.value )
             return
@@ -48,13 +48,15 @@ class ListViewModel : ViewModel() {
                 }
 
                 if (_currentPage.value!! == 0) {
+                    //load first page
                     _results.value = response
                 } else {
+                    // add objects for each new page
                     var temp = _results.value
                     response?.results?.let { temp?.results?.addAll(it) }
                     _results.value = temp
                 }
-                Log.d(TAG, " _results.value.results.size= " + _results.value?.results?.size )
+                //Log.d(TAG, " _results.value.results.size= " + _results.value?.results?.size )
                 _status.value = ResultsApiStatus.DONE
             } catch (e: Exception) {
                 e.printStackTrace()

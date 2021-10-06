@@ -8,7 +8,8 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 private const val BASE_URL = "https://randomuser.me/api/"
-//todo private const val RESULTS_PER_PAGE = 20
+//endpoint example "https://randomuser.me/api/page=0&results=10&seed=abc"
+private const val RESULTS_PER_PAGE = 20
 
 
 private val moshi = Moshi.Builder()
@@ -22,13 +23,10 @@ private val retrofit = Retrofit.Builder()
     .build()
 
 interface ItemsApiService {
-    @GET("?seed=abc&results=20")
+    @GET("?seed=abc&results=$RESULTS_PER_PAGE")
     suspend fun loadResults(
         @Query("page") page: Int
     ): Results
-
-//    @GET("?page=0&results=10&seed=abc")
-//    suspend fun getResults(): Results
 }
 
 object ResultsApi {

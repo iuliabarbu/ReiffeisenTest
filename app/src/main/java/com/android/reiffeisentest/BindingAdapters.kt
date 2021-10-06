@@ -2,12 +2,17 @@ package com.android.reiffeisentest
 
 import android.view.View
 import android.widget.ImageView
+import android.widget.TextView
+import androidx.annotation.NonNull
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.android.reiffeisentest.list.ResultsAdapter
 import com.android.reiffeisentest.list.ResultsApiStatus
 import com.android.reiffeisentest.network.Results
 import com.bumptech.glide.Glide
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
 
 @BindingAdapter("listData")
 fun bindRecyclerView(recyclerView: RecyclerView, data: Results?) {
@@ -41,4 +46,14 @@ fun bindImage(imgView: ImageView, imgUrl: String?) {
             .error(R.drawable.ic_broken_image)
             .into(imgView)
     }
+}
+
+val dateTimeFormatterIn = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.getDefault())
+val dateTimeFormatterOut = SimpleDateFormat("HH:mm", Locale.getDefault())
+@BindingAdapter("bindDate")
+fun bindDate(textView: TextView, date: String?) {
+    val parsedDate = dateTimeFormatterIn.parse(date)
+    val formattedDate: String = dateTimeFormatterOut.format(parsedDate)
+    textView.text = formattedDate
+    textView.invalidate()
 }

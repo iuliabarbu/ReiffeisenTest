@@ -11,6 +11,7 @@ data class Results(
 @Parcelize
 data class ResultItem(
     val gender: String,
+    val name : NameInfo,
     val location: LocationInfo,
     val email: String,
     val login: LoginInfo,
@@ -21,6 +22,13 @@ data class ResultItem(
     val id: IdInfo,
     val picture: PictureInfo,
     val nat: String
+) : Parcelable
+
+@Parcelize
+data class NameInfo(
+    val title: String,
+    val first: String,
+    val last: String
 ) : Parcelable
 
 @Parcelize
