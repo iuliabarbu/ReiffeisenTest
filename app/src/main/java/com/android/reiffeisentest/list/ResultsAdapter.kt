@@ -17,9 +17,7 @@ class ResultsAdapter : ListAdapter<ResultItem, ResultsAdapter.ResultsViewHolder>
         RecyclerView.ViewHolder(binding.root), View.OnClickListener {
         fun bind(p: ResultItem) {
             binding.resultItem = p
-
             binding.personName.setClipToOutline(true)
-
             binding.executePendingBindings()
         }
 
@@ -34,7 +32,7 @@ class ResultsAdapter : ListAdapter<ResultItem, ResultsAdapter.ResultsViewHolder>
         }
 
         override fun areContentsTheSame(oldItem: ResultItem, newItem: ResultItem): Boolean {
-            return oldItem.id == newItem.id
+            return oldItem.id.value == newItem.id.value
         }
     }
 

@@ -12,7 +12,7 @@ import com.bumptech.glide.Glide
 @BindingAdapter("listData")
 fun bindRecyclerView(recyclerView: RecyclerView, data: Results?) {
     val adapter = recyclerView.adapter as ResultsAdapter
-    adapter.submitList(data?.results)
+    adapter.submitList(data?.results?.let { ArrayList(it) }) // workaround : submitList not working correctly when the same list is submitted
 }
 
 @BindingAdapter("itemsApiStatus")
