@@ -5,11 +5,11 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class Results(
-    val results: List<PersonInfo>
+    val results: List<ResultItem>
 ) : Parcelable
 
 @Parcelize
-data class PersonInfo(
+data class ResultItem(
     val gender: String,
     val location: LocationInfo,
     val email: String,

@@ -7,16 +7,16 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.android.reiffeisentest.databinding.ListItemBinding
-import com.android.reiffeisentest.network.PersonInfo
+import com.android.reiffeisentest.network.ResultItem
 
-class ResultsAdapter : ListAdapter<PersonInfo, ResultsAdapter.ResultsViewHolder>(DiffCallback) {
+class ResultsAdapter : ListAdapter<ResultItem, ResultsAdapter.ResultsViewHolder>(DiffCallback) {
 
     class ResultsViewHolder(
         private var binding: ListItemBinding
     ) :
         RecyclerView.ViewHolder(binding.root), View.OnClickListener {
-        fun bind(p: PersonInfo) {
-            binding.personInfo = p
+        fun bind(p: ResultItem) {
+            binding.resultItem = p
 
             binding.personName.setClipToOutline(true)
 
@@ -28,12 +28,12 @@ class ResultsAdapter : ListAdapter<PersonInfo, ResultsAdapter.ResultsViewHolder>
         }
     }
 
-    companion object DiffCallback : DiffUtil.ItemCallback<PersonInfo>() {
-        override fun areItemsTheSame(oldItem: PersonInfo, newItem: PersonInfo): Boolean {
+    companion object DiffCallback : DiffUtil.ItemCallback<ResultItem>() {
+        override fun areItemsTheSame(oldItem: ResultItem, newItem: ResultItem): Boolean {
             return oldItem === newItem
         }
 
-        override fun areContentsTheSame(oldItem: PersonInfo, newItem: PersonInfo): Boolean {
+        override fun areContentsTheSame(oldItem: ResultItem, newItem: ResultItem): Boolean {
             return oldItem.id == newItem.id
         }
     }

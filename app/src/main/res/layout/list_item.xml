@@ -6,8 +6,8 @@
     <data>
 
         <variable
-            name="personInfo"
-            type="com.android.reiffeisentest.network.PersonInfo" />
+            name="resultItem"
+            type="com.android.reiffeisentest.network.ResultItem" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -20,14 +20,14 @@
             android:layout_height="100dp"
             android:background="@drawable/bg_circle"
             android:outlineProvider="background"
-            app:imageUrl="@{personInfo.picture.medium}"/>
+            app:imageUrl="@{resultItem.picture.medium}"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:text="abcdefg@email.com"
             app:layout_constraintTop_toBottomOf="@+id/person_name"
-            android:text="@{personInfo.email}"/>
+            android:text="@{resultItem.email}"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
