@@ -10,84 +10,84 @@ data class Results(
 
 @Parcelize
 data class ResultItem(
-    val gender: String,
-    val name : NameInfo,
+    val gender: String?=null,
+    val name : NameInfo?=null,
     val location: LocationInfo,
-    val email: String,
+    val email: String?=null,
     val login: LoginInfo,
     val dob: DobInfo,
     val registered: RegisteredInfo,
-    val phone: String,
-    val cell: String,
+    val phone: String?=null,
+    val cell: String?=null,
     val id: IdInfo,
     val picture: PictureInfo,
-    val nat: String
+    val nat: String?=null
 ) : Parcelable
 
 @Parcelize
 data class NameInfo(
-    val title: String,
-    val first: String,
-    val last: String
+    val title: String?=null,
+    val first: String?=null,
+    val last: String?=null
 ) : Parcelable
 
 @Parcelize
 data class LocationInfo(
     val street: StreetInfo,
-    val city: String,
-    val state: String,
-    val country: String,
-    val postcode: String,
+    val city: String?=null,
+    val state: String?=null,
+    val country: String?=null,
+    val postcode: String?=null,
     val coordinates: CoordinatesInfo,
     val timezone: TimezoneInfo
 ) : Parcelable
 
 @Parcelize
 data class StreetInfo(
-    val number: String,
-    val name: String
+    val number: String?=null,
+    val name: String?=null
 ) : Parcelable
 
 @Parcelize
 data class CoordinatesInfo(
-    val latitude: String,
-    val longitude: String
+    val latitude: String?=null,
+    val longitude: String?=null
 ) : Parcelable
 
 @Parcelize
 data class TimezoneInfo(
-    val offset: String,
-    val description: String
+    val offset: String?=null,
+    val description: String?=null
 ) : Parcelable
 
 @Parcelize
 data class LoginInfo(
-    val uuid: String,
-    val username: String,
-    val password: String,
-    val salt: String,
-    val md5: String,
-    val sha1: String,
-    val sha256: String
+    val uuid: String?=null,
+    val username: String?=null,
+    val password: String?=null,
+    val salt: String?=null,
+    val md5: String?=null,
+    val sha1: String?=null,
+    val sha256: String?=null
 ) : Parcelable
 
 @Parcelize
 data class DobInfo(
-    val date: String,
-    val age: String
+    val date: String?=null,
+    val age: String?=null
 ) : Parcelable
 
 @Parcelize
 data class PictureInfo(
-    val large: String,
-    val medium: String,
-    val thumbnail: String
+    val large: String?=null,
+    val medium: String?=null,
+    val thumbnail: String?=null
 ) : Parcelable
 
 @Parcelize
 data class RegisteredInfo(
-    val date: String,
-    val age: String
+    val date: String?=null,
+    val age: String?=null
 ) : Parcelable
 
 @Parcelize

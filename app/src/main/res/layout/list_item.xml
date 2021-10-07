@@ -27,7 +27,7 @@
             android:id="@+id/person_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="@dimen/text_marginTop"
             app:bindDate="@{resultItem.registered.date}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -38,19 +38,19 @@
             android:id="@+id/person_attachment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:paddingEnd="5dp"
+            android:layout_marginTop="@dimen/text_marginTop"
+            android:paddingEnd="@dimen/text_paddingEnd"
             android:src="@drawable/ic_action_attachment"
-            app:layout_constraintTop_toTopOf="@+id/person_image"
-            app:layout_constraintRight_toLeftOf="@+id/person_time" />
+            app:layout_constraintRight_toLeftOf="@+id/person_time"
+            app:layout_constraintTop_toTopOf="@+id/person_image" />
 
         <ImageView
             android:id="@+id/person_star"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="@dimen/text_marginTop"
+            android:padding="@dimen/item_padding"
             android:src="@drawable/ic_action_star"
-            android:padding="3dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/person_time" />
@@ -59,8 +59,8 @@
             android:id="@+id/person_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginLeft="@dimen/text_marginLeft"
+            android:layout_marginTop="@dimen/text_marginTop"
             android:text="@{@string/full_name(resultItem.name.first, resultItem.name.last)}"
             app:layout_constraintLeft_toRightOf="@+id/person_image"
             app:layout_constraintTop_toTopOf="@+id/person_image"
@@ -70,12 +70,12 @@
             android:id="@+id/person_years"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="@dimen/text_marginLeft"
             app:bindInfoAge="@{resultItem.dob.age}"
             app:bindInfoCountry="@{resultItem.location.country}"
             app:layout_constraintLeft_toRightOf="@+id/person_image"
             app:layout_constraintTop_toBottomOf="@+id/person_name"
-            tools:text="XXX YYY" />
+            tools:text="ZZZ AAA" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

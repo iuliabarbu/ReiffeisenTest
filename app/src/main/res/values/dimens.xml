@@ -1,3 +1,8 @@
 <resources>
     <dimen name="fab_margin">16dp</dimen>
+    <dimen name="text_marginTop">5dp</dimen>
+    <dimen name="text_paddingEnd">5dp</dimen>
+    <dimen name="item_padding">3dp</dimen>
+    <dimen name="text_marginLeft">10dp</dimen>
+    <dimen name="recyclerview_padding">8dp</dimen>
 </resources>
