@@ -34,7 +34,7 @@ class ListViewModel : ViewModel() {
     fun getPaginatedResults() {
         //load just 3 pages and avoid multiple calls from onScrolled
         if (currentPage.value!! >= 2 || _status.value == ResultsApiStatus.LOADING) {
-            Log.d(TAG, " return " + _currentPage.value + " -" + _status.value )
+            //Log.d(TAG, " return " + _currentPage.value + " -" + _status.value )
             return
         }
 

@@ -1,16 +1,16 @@
 package com.android.reiffeisentest
 
+import android.content.res.Resources
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.annotation.NonNull
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.android.reiffeisentest.list.ResultsAdapter
 import com.android.reiffeisentest.list.ResultsApiStatus
 import com.android.reiffeisentest.network.Results
+import com.android.reiffeisentest.shared.FormatUtils.FormatHelper
 import com.bumptech.glide.Glide
-import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -48,12 +48,20 @@ fun bindImage(imgView: ImageView, imgUrl: String?) {
     }
 }
 
-val dateTimeFormatterIn = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.getDefault())
-val dateTimeFormatterOut = SimpleDateFormat("HH:mm", Locale.getDefault())
+
 @BindingAdapter("bindDate")
-fun bindDate(textView: TextView, date: String?) {
-    val parsedDate = dateTimeFormatterIn.parse(date)
-    val formattedDate: String = dateTimeFormatterOut.format(parsedDate)
-    textView.text = formattedDate
+fun bindDate(textView: TextView, date: String) {
+    textView.text = FormatHelper.convertTimeForDisplay(date)
+    textView.invalidate()
+}
+
+@BindingAdapter("bindInfoAge","bindInfoCountry")
+fun bindInfo(textView: TextView, age: String, country: String) {
+    val countryCode = FormatHelper.convertCountryToCode(textView.resources, country)
+    var textToDisplay = String.format(
+        Locale.getDefault(),
+        textView.resources.getString(R.string.full_info), age, countryCode
+    )
+    textView.text = textToDisplay
     textView.invalidate()
 }
