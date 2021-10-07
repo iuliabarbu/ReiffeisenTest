@@ -1,17 +1,22 @@
-package com.android.reiffeisentest.list
+package com.android.reiffeisentest.main
 
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.android.reiffeisentest.network.Results
-import com.android.reiffeisentest.network.ResultsApi
+import com.android.reiffeisentest.api.Results
+import com.android.reiffeisentest.repository.ResultsRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 enum class ResultsApiStatus { LOADING, ERROR, DONE }
 
-class ListViewModel : ViewModel() {
+@HiltViewModel
+class ListViewModel @Inject constructor(
+    private val resultsRepository: ResultsRepository
+) : ViewModel() {
     val TAG = ListViewModel::class.java.simpleName as String
 
     private val _results = MutableLiveData<Results>()
@@ -22,32 +27,26 @@ class ListViewModel : ViewModel() {
     val status: LiveData<ResultsApiStatus>
         get() = _status
 
-    private val _currentPage = MutableLiveData<Int>()
-    val currentPage: LiveData<Int>
-        get() = _currentPage
+    private var currentPage: Int
 
     init {
-        _currentPage.value = -1
+        currentPage = -1
         getPaginatedResults()
     }
 
     fun getPaginatedResults() {
         //load just 3 pages and avoid multiple calls from onScrolled
-        if (currentPage.value!! >= 2 || _status.value == ResultsApiStatus.LOADING) {
-            //Log.d(TAG, " return " + _currentPage.value + " -" + _status.value )
+        if (currentPage >= 2 || _status.value == ResultsApiStatus.LOADING) {
             return
         }
 
-        _currentPage.value = _currentPage.value?.plus(1)
-
         viewModelScope.launch {
             _status.value = ResultsApiStatus.LOADING
+            currentPage = currentPage.plus(1)
             try {
-                var response = _currentPage.value?.let {
-                    ResultsApi.retrofitService.loadResults(it)
-                }
+                val response = resultsRepository.loadPaginatedResults(currentPage)
 
-                if (_currentPage.value!! == 0) {
+                if (currentPage == 0) {
                     //load first page
                     _results.value = response
                 } else {
@@ -56,12 +55,13 @@ class ListViewModel : ViewModel() {
                     response?.results?.let { temp?.results?.addAll(it) }
                     _results.value = temp
                 }
-                //Log.d(TAG, " _results.value.results.size= " + _results.value?.results?.size )
+                Log.d(TAG, " _results.value.results.size= " + _results.value?.results?.size)
                 _status.value = ResultsApiStatus.DONE
             } catch (e: Exception) {
                 e.printStackTrace()
                 _status.value = ResultsApiStatus.ERROR
             }
+
         }
     }
 }

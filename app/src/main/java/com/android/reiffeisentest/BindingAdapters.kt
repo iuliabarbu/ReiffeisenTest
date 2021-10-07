@@ -1,14 +1,13 @@
 package com.android.reiffeisentest
 
-import android.content.res.Resources
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.android.reiffeisentest.list.ResultsAdapter
-import com.android.reiffeisentest.list.ResultsApiStatus
-import com.android.reiffeisentest.network.Results
+import com.android.reiffeisentest.main.ResultsAdapter
+import com.android.reiffeisentest.main.ResultsApiStatus
+import com.android.reiffeisentest.api.Results
 import com.android.reiffeisentest.shared.FormatUtils.FormatHelper
 import com.bumptech.glide.Glide
 import java.util.*

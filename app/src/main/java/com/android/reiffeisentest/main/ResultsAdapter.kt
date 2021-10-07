@@ -1,4 +1,4 @@
-package com.android.reiffeisentest.list
+package com.android.reiffeisentest.main
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,9 +7,11 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.android.reiffeisentest.databinding.ListItemBinding
-import com.android.reiffeisentest.network.ResultItem
+import com.android.reiffeisentest.api.ResultItem
+import javax.inject.Inject
 
-class ResultsAdapter : ListAdapter<ResultItem, ResultsAdapter.ResultsViewHolder>(DiffCallback) {
+class ResultsAdapter @Inject constructor() :
+    ListAdapter<ResultItem, ResultsAdapter.ResultsViewHolder>(DiffCallback) {
 
     class ResultsViewHolder(
         private var binding: ListItemBinding

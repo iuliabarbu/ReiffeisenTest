@@ -1,4 +1,4 @@
-package com.android.reiffeisentest.network
+package com.android.reiffeisentest.api
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
