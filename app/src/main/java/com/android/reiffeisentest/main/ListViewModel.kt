@@ -55,7 +55,7 @@ class ListViewModel @Inject constructor(
                     response?.results?.let { temp?.results?.addAll(it) }
                     _results.value = temp
                 }
-                Log.d(TAG, " _results.value.results.size= " + _results.value?.results?.size)
+                //Log.d(TAG, " _results.value.results.size= " + _results.value?.results?.size)
                 _status.value = ResultsApiStatus.DONE
             } catch (e: Exception) {
                 e.printStackTrace()
